@@ -1,62 +1,38 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const StorageKeys = {
-  AUTH_TOKEN: 'auth_token',
-  USER_ID: 'user_id',
-  IS_PAID: 'is_paid',
-  FUNNEL_ANSWERS: 'funnel_answers',
-  ONBOARDING_COMPLETED: 'onboarding_completed',
+  AUTH_TOKEN: "auth_token",
+  USER_ID: "user_id",
+  IS_PAID: "is_paid",
+  FUNNEL_ANSWERS: "funnel_answers",
+  ONBOARDING_COMPLETED: "onboarding_completed",
 };
 
-export const storage = {
-  async setItem(key: string, value: string): Promise<void> {
-    try {
-      await AsyncStorage.setItem(key, value);
-    } catch (error) {
-      console.error('Error setting item in storage:', error);
-    }
-  },
+export const saveItem = async (key: string, value: any) => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem(key, jsonValue);
+  } catch (e) {
+    // saving error
+    console.error("Failed to save item to storage", e);
+  }
+};
 
-  async getItem(key: string): Promise<string | null> {
-    try {
-      return await AsyncStorage.getItem(key);
-    } catch (error) {
-      console.error('Error getting item from storage:', error);
-      return null;
-    }
-  },
+export const getItem = async (key: string) => {
+  try {
+    const jsonValue = await AsyncStorage.getItem(key);
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+  } catch (e) {
+    // error reading value
+    console.error("Failed to get item from storage", e);
+    return null;
+  }
+};
 
-  async removeItem(key: string): Promise<void> {
-    try {
-      await AsyncStorage.removeItem(key);
-    } catch (error) {
-      console.error('Error removing item from storage:', error);
-    }
-  },
+export const setOnboardingCompleted = async () => {
+    await saveItem('onboardingCompleted', true);
+};
 
-  async setObject(key: string, value: any): Promise<void> {
-    try {
-      await AsyncStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      console.error('Error setting object in storage:', error);
-    }
-  },
-
-  async getObject(key: string): Promise<any | null> {
-    try {
-      const item = await AsyncStorage.getItem(key);
-      return item ? JSON.parse(item) : null;
-    } catch (error) {
-      console.error('Error getting object from storage:', error);
-      return null;
-    }
-  },
-
-  async clear(): Promise<void> {
-    try {
-      await AsyncStorage.clear();
-    } catch (error) {
-      console.error('Error clearing storage:', error);
-    }
-  },
+export const getOnboardingCompleted = async () => {
+    return await getItem('onboardingCompleted');
 };

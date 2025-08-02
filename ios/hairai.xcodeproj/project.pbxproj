@@ -7,45 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0511C18C839C1B988225DF6F /* libPods-hairai.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB7FF3E5254FDCD54306EE4 /* libPods-hairai.a */; };
+		104E346D3AAF402DB4384AFE /* SF-Pro-Rounded-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 90FF2EDA88544929818B77E1 /* SF-Pro-Rounded-Heavy.otf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		1C639B0452DD032C27EA3E02 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3378C6850D885BF0A7F177C4 /* ExpoModulesProvider.swift */; };
-		22F864FDA99A489A81CEA1C3 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F185F19F43AC4751A38D7281 /* SF-Pro-Rounded-Semibold.otf */; };
-		2C658D4083264001A2CECA78 /* SF-Pro-Rounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1D3B56C846F1474784810DB4 /* SF-Pro-Rounded-Black.otf */; };
-		2E9EF0D1F2F4440BBE7BD13B /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7CDC1E264F0A4B7E88240F2D /* SF-Pro-Rounded-Bold.otf */; };
+		2BE2E0B8DA702C4A1DCF12CE /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71E15561A04D3B1D12B0627 /* ExpoModulesProvider.swift */; };
+		372F1718529A8FE50779FDF9 /* libPods-hairai.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38819C7E916E70E434447751 /* libPods-hairai.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		438255547A109B989413E7E0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6F0EA1A50539DBD926F6562D /* PrivacyInfo.xcprivacy */; };
-		4E46A966C51B481DAA72EF03 /* SF-Pro-Rounded-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DA44A7E77D40F68A7914B0 /* SF-Pro-Rounded-Heavy.otf */; };
-		7B87345394E6475B88E2409D /* SF-Pro-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DCFB3F55B2A24989ADF0DAB4 /* SF-Pro-Rounded-Regular.otf */; };
-		88415FA9F18C45049E08EEAE /* SF-Pro-Rounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 455F16A6516749268074B838 /* SF-Pro-Rounded-Light.otf */; };
+		48FF84FC2CFF8D8D457CA977 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F58BE10C7A15ACF889A69F02 /* PrivacyInfo.xcprivacy */; };
+		56484C4DE50946E2A9DB1EF5 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 477A28EA9D6A463E99368D0B /* SF-Pro-Rounded-Bold.otf */; };
+		68E5AED31DB548B788B4867A /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1105EE5FA515423A854E2889 /* SF-Pro-Rounded-Medium.otf */; };
+		9A7D7D860BD049498D429A07 /* SF-Pro-Rounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D911E916AD434647829F2F23 /* SF-Pro-Rounded-Black.otf */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		CF64725704C24C7980DC9577 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D16D6BBE6F734968BCABBA8F /* SF-Pro-Rounded-Medium.otf */; };
+		C49E37D79F3E4C24997FBC2D /* SF-Pro-Rounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9D8E8C2D98374CF6AF7D816B /* SF-Pro-Rounded-Light.otf */; };
+		CC0B4777DA9546CA8840DB31 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 78624B3F2CF74C1B82956037 /* SF-Pro-Rounded-Semibold.otf */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
-		6055AF0D01DC4C61B2DDCB7F /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC64DE30F2422397B4795C /* noop-file.swift */; };
+		FC4C368F9C1D41A58AA3D791 /* SF-Pro-Rounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E1715948DB249DDAAF4AE05 /* SF-Pro-Rounded-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1105EE5FA515423A854E2889 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Medium.otf"; path = "../assets/fonts/SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* hairai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hairai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = hairai/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = hairai/Info.plist; sourceTree = "<group>"; };
-		1D3B56C846F1474784810DB4 /* SF-Pro-Rounded-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Black.otf"; path = "../assets/fonts/SF-Pro-Rounded-Black.otf"; sourceTree = "<group>"; };
-		3378C6850D885BF0A7F177C4 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-hairai/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		455F16A6516749268074B838 /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Light.otf"; path = "../assets/fonts/SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
-		528BBF14D2ECB39B75177743 /* Pods-hairai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hairai.release.xcconfig"; path = "Target Support Files/Pods-hairai/Pods-hairai.release.xcconfig"; sourceTree = "<group>"; };
-		52BCA99BC1F7127DA5B0717F /* Pods-hairai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hairai.debug.xcconfig"; path = "Target Support Files/Pods-hairai/Pods-hairai.debug.xcconfig"; sourceTree = "<group>"; };
-		6F0EA1A50539DBD926F6562D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = hairai/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		7CDC1E264F0A4B7E88240F2D /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Bold.otf"; path = "../assets/fonts/SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
-		81DA44A7E77D40F68A7914B0 /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Heavy.otf"; path = "../assets/fonts/SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
+		38819C7E916E70E434447751 /* libPods-hairai.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hairai.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D92E86A0EADD438A8DCE401 /* Pods-hairai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hairai.debug.xcconfig"; path = "Target Support Files/Pods-hairai/Pods-hairai.debug.xcconfig"; sourceTree = "<group>"; };
+		477A28EA9D6A463E99368D0B /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Bold.otf"; path = "../assets/fonts/SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
+		6E1715948DB249DDAAF4AE05 /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Regular.otf"; path = "../assets/fonts/SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		78624B3F2CF74C1B82956037 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Semibold.otf"; path = "../assets/fonts/SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
+		90FF2EDA88544929818B77E1 /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Heavy.otf"; path = "../assets/fonts/SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
+		9D8E8C2D98374CF6AF7D816B /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Light.otf"; path = "../assets/fonts/SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = hairai/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		BEB7FF3E5254FDCD54306EE4 /* libPods-hairai.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hairai.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D16D6BBE6F734968BCABBA8F /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Medium.otf"; path = "../assets/fonts/SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
-		DCFB3F55B2A24989ADF0DAB4 /* SF-Pro-Rounded-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Regular.otf"; path = "../assets/fonts/SF-Pro-Rounded-Regular.otf"; sourceTree = "<group>"; };
+		D911E916AD434647829F2F23 /* SF-Pro-Rounded-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Black.otf"; path = "../assets/fonts/SF-Pro-Rounded-Black.otf"; sourceTree = "<group>"; };
+		EB7C14BFDAAE22BB8CDE05D4 /* Pods-hairai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hairai.release.xcconfig"; path = "Target Support Files/Pods-hairai/Pods-hairai.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = hairai/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* hairai-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "hairai-Bridging-Header.h"; path = "hairai/hairai-Bridging-Header.h"; sourceTree = "<group>"; };
-		F185F19F43AC4751A38D7281 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Semibold.otf"; path = "../assets/fonts/SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
-		EBBC64DE30F2422397B4795C /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "hairai/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		F58BE10C7A15ACF889A69F02 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = hairai/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		F71E15561A04D3B1D12B0627 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-hairai/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,21 +51,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0511C18C839C1B988225DF6F /* libPods-hairai.a in Frameworks */,
+				372F1718529A8FE50779FDF9 /* libPods-hairai.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0CB1EBA7936552EC0CE3D576 /* Pods */ = {
+		13463A3DF16736CD12C9FAD9 /* hairai */ = {
 			isa = PBXGroup;
 			children = (
-				52BCA99BC1F7127DA5B0717F /* Pods-hairai.debug.xcconfig */,
-				528BBF14D2ECB39B75177743 /* Pods-hairai.release.xcconfig */,
+				F71E15561A04D3B1D12B0627 /* ExpoModulesProvider.swift */,
 			);
-			name = Pods;
-			path = Pods;
+			name = hairai;
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* hairai */ = {
@@ -79,8 +75,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				6F0EA1A50539DBD926F6562D /* PrivacyInfo.xcprivacy */,
-				EBBC64DE30F2422397B4795C /* noop-file.swift */,
+				F58BE10C7A15ACF889A69F02 /* PrivacyInfo.xcprivacy */,
 			);
 			name = hairai;
 			sourceTree = "<group>";
@@ -89,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				BEB7FF3E5254FDCD54306EE4 /* libPods-hairai.a */,
+				38819C7E916E70E434447751 /* libPods-hairai.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -108,9 +103,9 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				0CB1EBA7936552EC0CE3D576 /* Pods */,
-				DBC28FEA15145F3A9CAAB534 /* ExpoModulesProviders */,
-				9C689B731BA641568B5734FD /* Resources */,
+				F8A7CE3A4B72414ABD99AC7C /* Resources */,
+				88955C37D5DD01275A32A2D9 /* Pods */,
+				9C691634EE098110B76601CF /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -125,19 +120,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9C689B731BA641568B5734FD /* Resources */ = {
+		88955C37D5DD01275A32A2D9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1D3B56C846F1474784810DB4 /* SF-Pro-Rounded-Black.otf */,
-				7CDC1E264F0A4B7E88240F2D /* SF-Pro-Rounded-Bold.otf */,
-				81DA44A7E77D40F68A7914B0 /* SF-Pro-Rounded-Heavy.otf */,
-				455F16A6516749268074B838 /* SF-Pro-Rounded-Light.otf */,
-				D16D6BBE6F734968BCABBA8F /* SF-Pro-Rounded-Medium.otf */,
-				DCFB3F55B2A24989ADF0DAB4 /* SF-Pro-Rounded-Regular.otf */,
-				F185F19F43AC4751A38D7281 /* SF-Pro-Rounded-Semibold.otf */,
+				3D92E86A0EADD438A8DCE401 /* Pods-hairai.debug.xcconfig */,
+				EB7C14BFDAAE22BB8CDE05D4 /* Pods-hairai.release.xcconfig */,
 			);
-			name = Resources;
-			path = "";
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9C691634EE098110B76601CF /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				13463A3DF16736CD12C9FAD9 /* hairai */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -149,20 +147,19 @@
 			path = hairai/Supporting;
 			sourceTree = "<group>";
 		};
-		DBC28FEA15145F3A9CAAB534 /* ExpoModulesProviders */ = {
+		F8A7CE3A4B72414ABD99AC7C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FF3418C684B0F475D19722F2 /* hairai */,
+				D911E916AD434647829F2F23 /* SF-Pro-Rounded-Black.otf */,
+				477A28EA9D6A463E99368D0B /* SF-Pro-Rounded-Bold.otf */,
+				90FF2EDA88544929818B77E1 /* SF-Pro-Rounded-Heavy.otf */,
+				9D8E8C2D98374CF6AF7D816B /* SF-Pro-Rounded-Light.otf */,
+				1105EE5FA515423A854E2889 /* SF-Pro-Rounded-Medium.otf */,
+				6E1715948DB249DDAAF4AE05 /* SF-Pro-Rounded-Regular.otf */,
+				78624B3F2CF74C1B82956037 /* SF-Pro-Rounded-Semibold.otf */,
 			);
-			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
-		FF3418C684B0F475D19722F2 /* hairai */ = {
-			isa = PBXGroup;
-			children = (
-				3378C6850D885BF0A7F177C4 /* ExpoModulesProvider.swift */,
-			);
-			name = hairai;
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,13 +170,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "hairai" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				23B882ECF1C0E5703525B726 /* [Expo] Configure project */,
+				1F44C00BA7C43D106CC2ECB3 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				5540379E675E216BAE2D5346 /* [CP] Embed Pods Frameworks */,
+				A388D5F53BDED1C8552AE6D6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,14 +226,14 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				438255547A109B989413E7E0 /* PrivacyInfo.xcprivacy in Resources */,
-				2C658D4083264001A2CECA78 /* SF-Pro-Rounded-Black.otf in Resources */,
-				2E9EF0D1F2F4440BBE7BD13B /* SF-Pro-Rounded-Bold.otf in Resources */,
-				4E46A966C51B481DAA72EF03 /* SF-Pro-Rounded-Heavy.otf in Resources */,
-				88415FA9F18C45049E08EEAE /* SF-Pro-Rounded-Light.otf in Resources */,
-				CF64725704C24C7980DC9577 /* SF-Pro-Rounded-Medium.otf in Resources */,
-				7B87345394E6475B88E2409D /* SF-Pro-Rounded-Regular.otf in Resources */,
-				22F864FDA99A489A81CEA1C3 /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				9A7D7D860BD049498D429A07 /* SF-Pro-Rounded-Black.otf in Resources */,
+				56484C4DE50946E2A9DB1EF5 /* SF-Pro-Rounded-Bold.otf in Resources */,
+				104E346D3AAF402DB4384AFE /* SF-Pro-Rounded-Heavy.otf in Resources */,
+				C49E37D79F3E4C24997FBC2D /* SF-Pro-Rounded-Light.otf in Resources */,
+				68E5AED31DB548B788B4867A /* SF-Pro-Rounded-Medium.otf in Resources */,
+				FC4C368F9C1D41A58AA3D791 /* SF-Pro-Rounded-Regular.otf in Resources */,
+				CC0B4777DA9546CA8840DB31 /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				48FF84FC2CFF8D8D457CA977 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +277,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		23B882ECF1C0E5703525B726 /* [Expo] Configure project */ = {
+		1F44C00BA7C43D106CC2ECB3 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -299,7 +296,65 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-hairai/expo-configure-project.sh\"\n";
 		};
-		5540379E675E216BAE2D5346 /* [CP] Embed Pods Frameworks */ = {
+		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-hairai/Pods-hairai-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/AppAuth/AppAuthCore_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXNotifications/ExpoNotifications_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoSystemUI/ExpoSystemUI_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GTMAppAuth/GTMAppAuth_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher_Core_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleSignIn/GoogleSignIn.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RCT-Folly/RCT-Folly_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/boost/boost_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/glog/glog_privacy.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppAuthCore_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoApplication_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoNotifications_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoSystemUI_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMAppAuth_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMSessionFetcher_Core_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleUtilities_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FBLPromises_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCT-Folly_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SDWebImage.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/boost_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/glog_privacy.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hairai/Pods-hairai-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A388D5F53BDED1C8552AE6D6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -317,52 +372,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hairai/Pods-hairai-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-hairai/Pods-hairai-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXNotifications/ExpoNotifications_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoSystemUI/ExpoSystemUI_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RCT-Folly/RCT-Folly_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/boost/boost_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/glog/glog_privacy.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoApplication_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoNotifications_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoSystemUI_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCT-Folly_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SDWebImage.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/boost_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/glog_privacy.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hairai/Pods-hairai-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -371,8 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				1C639B0452DD032C27EA3E02 /* ExpoModulesProvider.swift in Sources */,
-				6055AF0D01DC4C61B2DDCB7F /* noop-file.swift in Sources */,
+				2BE2E0B8DA702C4A1DCF12CE /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +389,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52BCA99BC1F7127DA5B0717F /* Pods-hairai.debug.xcconfig */;
+			baseConfigurationReference = 3D92E86A0EADD438A8DCE401 /* Pods-hairai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -405,8 +413,8 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skinalyzeteam.hairai;
-				PRODUCT_NAME = "hairai";
+				PRODUCT_BUNDLE_IDENTIFIER = com.boringbuildscompany.hairai;
+				PRODUCT_NAME = hairai;
 				SWIFT_OBJC_BRIDGING_HEADER = "hairai/hairai-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -417,7 +425,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 528BBF14D2ECB39B75177743 /* Pods-hairai.release.xcconfig */;
+			baseConfigurationReference = EB7C14BFDAAE22BB8CDE05D4 /* Pods-hairai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -436,8 +444,8 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skinalyzeteam.hairai;
-				PRODUCT_NAME = "hairai";
+				PRODUCT_BUNDLE_IDENTIFIER = com.boringbuildscompany.hairai;
+				PRODUCT_NAME = hairai;
 				SWIFT_OBJC_BRIDGING_HEADER = "hairai/hairai-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

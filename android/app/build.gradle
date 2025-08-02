@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.skinalyzeteam.hairai'
+    namespace 'com.boringbuildscompany.hairai'
     defaultConfig {
-        applicationId 'com.skinalyzeteam.hairai'
+        applicationId 'com.boringbuildscompany.hairai'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

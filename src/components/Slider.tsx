@@ -1,7 +1,7 @@
-import Slider from '@react-native-community/slider';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { colors, spacing, typography } from '../theme/colors';
+import Slider from "@react-native-community/slider";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { colors, spacing, typography } from "../theme/colors";
 
 interface SliderProps {
   value: number;
@@ -28,10 +28,8 @@ const CustomSlider: React.FC<SliderProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      {label && (
-        <Text style={styles.label}>{label}</Text>
-      )}
-      
+      {label && <Text style={styles.label}>{label}</Text>}
+
       <View style={styles.sliderContainer}>
         <Slider
           style={styles.slider}
@@ -48,15 +46,11 @@ const CustomSlider: React.FC<SliderProps> = ({
       </View>
 
       <View style={styles.labelsContainer}>
-        {minimumLabel && (
-          <Text style={styles.minMaxLabel}>{minimumLabel}</Text>
-        )}
+        {minimumLabel && <Text style={styles.minMaxLabel}>{minimumLabel}</Text>}
         {showValue && (
           <Text style={styles.valueLabel}>{Math.round(value)}</Text>
         )}
-        {maximumLabel && (
-          <Text style={styles.minMaxLabel}>{maximumLabel}</Text>
-        )}
+        {maximumLabel && <Text style={styles.minMaxLabel}>{maximumLabel}</Text>}
       </View>
     </View>
   );
@@ -64,20 +58,20 @@ const CustomSlider: React.FC<SliderProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: "100%",
   },
   label: {
     fontSize: typography.sizes.medium,
     fontWeight: typography.weights.medium,
     color: colors.text.primary,
     marginBottom: spacing.md,
-    textAlign: 'center',
+    textAlign: "center",
   },
   sliderContainer: {
     paddingHorizontal: spacing.md,
   },
   slider: {
-    width: '100%',
+    width: "100%",
     height: 40,
   },
   thumb: {
@@ -90,9 +84,9 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   labelsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingHorizontal: spacing.md,
     marginTop: spacing.sm,
   },
@@ -110,7 +104,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.xs,
     borderRadius: 20,
     minWidth: 50,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 

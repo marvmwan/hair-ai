@@ -1,41 +1,95 @@
-import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import React from 'react';
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Button from '../../../components/Button';
-import { useFunnel } from '../../../contexts/FunnelContext';
-import { HairScanStackParamList } from '../../../navigation/HairScanNavigator';
-import { borderRadius, colors, spacing, typography } from '../../../theme/colors';
+import { Ionicons } from "@expo/vector-icons";
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { LinearGradient } from "expo-linear-gradient";
+import React from "react";
+import {
+  FlatList,
+  Image,
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import Button from "../../../components/Button";
+import { FunnelAnswers, useFunnel } from "../../../contexts/FunnelContext";
+import { HairScanStackParamList } from "../../../navigation/HairScanNavigator";
+import {
+  borderRadius,
+  colors,
+  spacing,
+  typography,
+} from "../../../theme/colors";
+import { ScanType } from "../HairScanInfoScreen";
 
-type ReviewScreenNavigationProp = StackNavigationProp<HairScanStackParamList, 'Review'>;
+type ReviewScreenRouteProp = RouteProp<HairScanStackParamList, "Review">;
+type ReviewScreenNavigationProp = StackNavigationProp<
+  HairScanStackParamList,
+  "Review"
+>;
 
-const scanOrder = ['topViewImage', 'sideViewImage', 'backViewImage', 'frontViewImage', 'faceShapeImage'];
+const scanRequirements: Record<ScanType, (keyof FunnelAnswers)[]> = {
+  [ScanType.HairAnalysis]: [
+    "topViewImage",
+    "sideViewImage",
+    "backViewImage",
+    "frontViewImage",
+  ],
+  [ScanType.FaceShapeAnalysis]: ["faceShapeImage"],
+  [ScanType.HaircutTryOn]: ["faceShapeImage", "sideViewImage"],
+};
+const optionalScan = "faceShapeImage";
 
-const ReviewScreen = () => {
-  const navigation = useNavigation<ReviewScreenNavigationProp>();
-  const { answers } = useFunnel();
+const ReviewScreen = ({
+  navigation,
+  route,
+}: {
+  navigation: ReviewScreenNavigationProp;
+  route: ReviewScreenRouteProp;
+}) => {
+  // const navigation = useNavigation<ReviewScreenNavigationProp>();
+  // const route = useRoute<ReviewScreenRouteProp>();
+  const { answers, clearScanAnswers } = useFunnel();
 
-  const capturedImages = scanOrder.map(key => ({
+  const scanType = route.params?.scanType;
+  const scanOrder = scanType ? scanRequirements[scanType] : [];
+
+  const capturedImages = [
+    ...scanOrder,
+    ...(answers[optionalScan] && !scanOrder.includes(optionalScan)
+      ? [optionalScan]
+      : []),
+  ].map((key) => ({
     key,
     uri: answers[key as keyof typeof answers],
-    title: key.replace('ViewImage', ' view').replace('ShapeImage', ' shape'),
+    title: key.replace("ViewImage", " view").replace("ShapeImage", " shape"),
   }));
 
-  const allRequiredScansDone = scanOrder.every(key => key === 'faceShapeImage' || !!answers[key as keyof typeof answers]);
+  const allRequiredScansDone = scanOrder.every(
+    (key) => !!answers[key as keyof typeof answers],
+  );
 
-  const handleRetake = (scanType: string) => {
-    const type = scanType.replace('ViewImage', '').replace('ShapeImage', '') as 'top' | 'side' | 'back' | 'front' | 'face';
-    navigation.navigate('Capture', { scanType: type });
+  const handleRetake = (scanTypeToRetake: string) => {
+    const type = scanTypeToRetake
+      .replace("ViewImage", "")
+      .replace("ShapeImage", "") as "top" | "side" | "back" | "front" | "face";
+    navigation.navigate("Capture", { scanType: scanType });
   };
-  
+
   const handleConfirm = () => {
     // TODO: Implement analysis logic
-    console.log('Starting analysis with:', answers);
-    navigation.getParent()?.getParent()?.navigate('Loading');
+    console.log("Starting analysis with:", answers);
+    navigation.getParent()?.navigate("Loading", { scanType: scanType });
   };
 
-  const renderScanItem = ({ item }: { item: typeof capturedImages[0] }) => (
+  const handleClearAndRestart = () => {
+    clearScanAnswers();
+    navigation.getParent()?.getParent()?.goBack();
+  };
+
+  const renderScanItem = ({ item }: { item: (typeof capturedImages)[0] }) => (
     <View style={styles.scanItem}>
       {item.uri ? (
         <Image source={{ uri: item.uri as string }} style={styles.thumbnail} />
@@ -45,66 +99,103 @@ const ReviewScreen = () => {
         </View>
       )}
       <Text style={styles.itemTitle}>{item.title}</Text>
-      <TouchableOpacity onPress={() => handleRetake(item.key)} style={styles.retakeButton}>
+      <TouchableOpacity
+        onPress={() => handleRetake(item.key)}
+        style={styles.retakeButton}
+      >
         <Text style={styles.retakeText}>Retake</Text>
       </TouchableOpacity>
     </View>
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Ionicons name="arrow-back" size={28} color={colors.text.primary} />
-        </TouchableOpacity>
-        <Text style={styles.title}>Review Scans</Text>
-      </View>
+    <LinearGradient
+      colors={[colors.gradient.light, colors.gradient.dark]}
+      style={styles.gradient}
+    >
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.backButton}
+          >
+            <Ionicons name="arrow-back" size={28} color={colors.text.primary} />
+          </TouchableOpacity>
+          <Text style={styles.title}>Review Scans</Text>
+        </View>
 
-      <FlatList
-        data={capturedImages}
-        renderItem={renderScanItem}
-        numColumns={2}
-        keyExtractor={item => item.key}
-        contentContainerStyle={styles.grid}
-      />
-      
-      {!answers.faceShapeImage && (
-        <View style={styles.addFaceScanCard}>
-          <Text style={styles.addFaceScanTitle}>Recommended Hairstyle?</Text>
-          <Text style={styles.addFaceScanText}>
-            Add a face scan to analyze for optimal Haircut style&apos;s tailored to your face shape and hair capabilities
-          </Text>
+        <FlatList
+          data={capturedImages}
+          renderItem={renderScanItem}
+          numColumns={2}
+          keyExtractor={(item) => item.key}
+          columnWrapperStyle={styles.columnWrapper}
+          showsVerticalScrollIndicator={false}
+        />
+
+        {!answers.faceShapeImage && (
+          <View style={styles.addFaceScanCard}>
+            <Text style={styles.addFaceScanTitle}>Recommended Hairstyle?</Text>
+            <Text style={styles.addFaceScanText}>
+              Add a face scan to analyze for optimal Haircut style&apos;s
+              tailored to your face shape and hair capabilities
+            </Text>
+            <View style={styles.buttonContainer}>
+              <Button
+                title="Add Face Scan"
+                onPress={() => handleRetake(optionalScan)}
+                size="medium"
+                leftIcon={
+                  <Ionicons
+                    name="scan-outline"
+                    size={20}
+                    color={colors.text.primary}
+                  />
+                }
+                style={styles.button}
+                textStyle={styles.buttonText}
+                withShadow={false}
+              />
+            </View>
+          </View>
+        )}
+
+        <View style={styles.buttonContainer}>
           <Button
-            title="Add Face Scan"
-            onPress={() => handleRetake('faceShapeImage')}
-            size="small"
-            leftIcon={<Ionicons name="scan-outline" size={20} color={colors.text.primary} />}
+            title="Confirm and Start Analysis"
+            onPress={handleConfirm}
+            disabled={!allRequiredScansDone}
+            size="large"
+            style={styles.button}
+            textStyle={styles.buttonText}
+          />
+          <Button
+            title="Clear Images and Restart"
+            onPress={handleClearAndRestart}
+            variant="outline"
+            style={{ marginTop: spacing.md }}
           />
         </View>
-      )}
-
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Confirm and Start Analysis"
-          onPress={handleConfirm}
-          disabled={!allRequiredScansDone}
-          size="large"
-        />
-      </View>
-    </View>
+      </SafeAreaView>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
+  gradient: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    backgroundColor: colors.background,
-    padding: spacing.lg,
+    backgroundColor: "transparent",
+
+    marginHorizontal: spacing.lg,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: spacing.lg,
+    paddingTop: Platform.OS === "android" ? spacing.xl : spacing.lg,
   },
   backButton: {
     marginRight: spacing.md,
@@ -115,15 +206,18 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
   },
+  columnWrapper: {
+    gap: spacing.md,
+  },
   grid: {
-    justifyContent: 'space-between',
+    gap: spacing.md,
   },
   scanItem: {
-    width: '48%',
-    aspectRatio: 4 / 5,
+    width: "48%",
+    aspectRatio: 1,
     marginBottom: spacing.md,
     borderRadius: borderRadius.lg,
-    overflow: 'hidden',
+    overflow: "hidden",
     backgroundColor: colors.secondary,
   },
   thumbnail: {
@@ -131,28 +225,28 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: colors.gray.light,
   },
   itemTitle: {
-    position: 'absolute',
+    position: "absolute",
     top: spacing.sm,
     left: spacing.sm,
     fontFamily: typography.fonts.rounded,
     fontSize: typography.sizes.small,
     fontWeight: typography.weights.semibold,
     color: colors.secondary,
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    backgroundColor: "rgba(0,0,0,0.4)",
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.xs,
     borderRadius: borderRadius.sm,
   },
   retakeButton: {
-    position: 'absolute',
+    position: "absolute",
     bottom: spacing.sm,
     right: spacing.sm,
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    backgroundColor: "rgba(0,0,0,0.6)",
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
     borderRadius: borderRadius.full,
@@ -166,7 +260,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderRadius: borderRadius.lg,
     padding: spacing.lg,
-    marginVertical: spacing.lg,
+    marginVertical: spacing.sm,
+    // Shadow for iOS
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    // Shadow for Android
+    elevation: 6,
   },
   addFaceScanTitle: {
     fontFamily: typography.fonts.rounded,
@@ -182,6 +283,13 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     paddingVertical: spacing.sm,
+  },
+  button: {
+    backgroundColor: colors.button.primary,
+    borderRadius: borderRadius.full,
+  },
+  buttonText: {
+    color: colors.text.primary,
   },
 });
 

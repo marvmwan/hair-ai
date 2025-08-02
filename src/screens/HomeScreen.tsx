@@ -1,42 +1,43 @@
-import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Button from '../components/Button';
-import { useAuth } from '../contexts/AuthContext';
-import { useRevenueCat } from '../contexts/RevenueCatContext';
-import { colors, spacing, typography } from '../theme/colors';
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import React, { useEffect } from "react";
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import Button from "../components/Button";
+import { useRevenueCat } from "../contexts/RevenueCatContext";
+import { colors, spacing, typography } from "../theme/colors";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-  const { userId } = useAuth();
   const { isSubscribed } = useRevenueCat();
 
   useEffect(() => {
     // If user is not subscribed, show paywall modal
     if (!isSubscribed) {
-      navigation.navigate('Paywall' as never);
+      navigation.navigate("Paywall" as never);
     }
   }, [isSubscribed, navigation]);
 
   const handleAnalyzeHair = () => {
     // Navigate to hair analysis flow
-    console.log('Navigate to hair analysis');
+    console.log("Navigate to hair analysis");
   };
 
   const handleViewRecommendations = () => {
     // Navigate to recommendations
-    console.log('Navigate to recommendations');
+    console.log("Navigate to recommendations");
   };
 
   const handleBookBarber = () => {
     // Navigate to barber booking
-    console.log('Navigate to barber booking');
+    console.log("Navigate to barber booking");
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.greeting}>Welcome back!</Text>
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
     borderRadius: 16,
     padding: spacing.lg,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
@@ -167,8 +168,8 @@ const styles = StyleSheet.create({
     height: 64,
     borderRadius: 32,
     backgroundColor: colors.background,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: spacing.md,
   },
   cardTitle: {
@@ -184,7 +185,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.lg,
   },
   cardButton: {
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
   },
   statsContainer: {
     marginHorizontal: spacing.lg,
@@ -198,14 +199,14 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
     marginBottom: spacing.lg,
-    textAlign: 'center',
+    textAlign: "center",
   },
   statsGrid: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
   statItem: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   statNumber: {
     fontSize: typography.sizes.xxlarge,
@@ -216,7 +217,7 @@ const styles = StyleSheet.create({
   statLabel: {
     fontSize: typography.sizes.small,
     color: colors.gray.dark,
-    textAlign: 'center',
+    textAlign: "center",
   },
   activityContainer: {
     marginHorizontal: spacing.lg,
@@ -235,8 +236,8 @@ const styles = StyleSheet.create({
   activityPlaceholder: {
     fontSize: typography.sizes.medium,
     color: colors.gray.dark,
-    textAlign: 'center',
-    fontStyle: 'italic',
+    textAlign: "center",
+    fontStyle: "italic",
   },
 });
 

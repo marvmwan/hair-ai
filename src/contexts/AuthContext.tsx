@@ -1,100 +1,106 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { storage, StorageKeys } from '../utils/storage';
+import * as SecureStore from "expo-secure-store";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import apiClient from "../api/apiClient";
 
 interface AuthContextType {
+  accessToken: string | null;
   isAuthenticated: boolean;
-  userId: string | null;
   isLoading: boolean;
-  login: (token: string, userId: string) => Promise<void>;
+  login: (access: string, refresh: string) => Promise<void>;
   logout: () => Promise<void>;
-  checkAuthStatus: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
-
-interface AuthProviderProps {
-  children: ReactNode;
-}
-
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userId, setUserId] = useState<string | null>(null);
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [accessToken, setAccessToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const checkAuthStatus = async () => {
-    try {
-      setIsLoading(true);
-      const token = await storage.getItem(StorageKeys.AUTH_TOKEN);
-      const userIdFromStorage = await storage.getItem(StorageKeys.USER_ID);
+  useEffect(() => {
+    const loadTokens = async () => {
+      const accessToken = await SecureStore.getItemAsync("accessToken");
+      const refreshToken = await SecureStore.getItemAsync("refreshToken");
 
-      if (token && userIdFromStorage) {
-        setIsAuthenticated(true);
-        setUserId(userIdFromStorage);
-      } else {
-        setIsAuthenticated(false);
-        setUserId(null);
+      if (accessToken) {
+        try {
+          const isValid = await verifyToken(accessToken);
+          if (isValid) {
+            setAccessToken(accessToken);
+          } else if (refreshToken) {
+            await refreshAuthToken(refreshToken);
+          }
+        } catch (error) {
+          console.error("Token validation failed", error);
+        }
       }
-    } catch (error) {
-      console.error('Error checking auth status:', error);
-      setIsAuthenticated(false);
-      setUserId(null);
-    } finally {
       setIsLoading(false);
+    };
+
+    loadTokens();
+  }, []);
+
+  const login = async (access: string, refresh: string) => {
+    setAccessToken(access);
+    await SecureStore.setItemAsync("accessToken", access);
+    await SecureStore.setItemAsync("refreshToken", refresh);
+  };
+
+  const logout = async () => {
+    setAccessToken(null);
+    await SecureStore.deleteItemAsync("accessToken");
+    await SecureStore.deleteItemAsync("refreshToken");
+  };
+
+  const verifyToken = async (token: string): Promise<boolean> => {
+    try {
+      const response = await apiClient.post("/jwt/verify", { token });
+      return response.status === 200;
+    } catch (error) {
+      return false;
     }
   };
 
-  const login = async (token: string, userId: string) => {
+  const refreshAuthToken = async (refreshToken: string) => {
     try {
-      await storage.setItem(StorageKeys.AUTH_TOKEN, token);
-      await storage.setItem(StorageKeys.USER_ID, userId);
-      
-      setIsAuthenticated(true);
-      setUserId(userId);
+      const response = await apiClient.post("/jwt/refresh", {
+        token: refreshToken,
+      });
+      const { access } = response.data;
+      setAccessToken(access);
+      await SecureStore.setItemAsync("accessToken", access);
     } catch (error) {
-      console.error('Error logging in:', error);
+      await logout();
       throw error;
     }
   };
 
-  const logout = async () => {
-    try {
-      await storage.removeItem(StorageKeys.AUTH_TOKEN);
-      await storage.removeItem(StorageKeys.USER_ID);
-      await storage.removeItem(StorageKeys.IS_PAID);
-      await storage.removeItem(StorageKeys.FUNNEL_ANSWERS);
-      await storage.removeItem(StorageKeys.ONBOARDING_COMPLETED);
-      
-      setIsAuthenticated(false);
-      setUserId(null);
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
-  };
-
-  useEffect(() => {
-    checkAuthStatus();
-  }, []);
-
-  const value: AuthContextType = {
-    isAuthenticated,
-    userId,
-    isLoading,
-    login,
-    logout,
-    checkAuthStatus,
-  };
-
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider
+      value={{
+        accessToken,
+        isAuthenticated: !!accessToken,
+        isLoading,
+        login,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 };

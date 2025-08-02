@@ -69,6 +69,7 @@ npm start
 ## 🎨 Theme System
 
 Gender-inclusive color palette:
+
 - Primary: #4A90E2 (Blue)
 - Accent: #50C878 (Green)
 - Background: #F5F5F5 (Light Gray)
@@ -78,15 +79,18 @@ Gender-inclusive color palette:
 ## 📊 State Management
 
 ### AuthContext
+
 - `isAuthenticated`: Boolean
 - `userId`: String | null
 - `login()`, `logout()`, `checkAuthStatus()`
 
 ### RevenueCatContext
+
 - `isSubscribed`: Boolean
 - `purchase()`, `restorePurchases()`
 
 ### FunnelContext
+
 - `answers`: FunnelAnswers object
 - `updateAnswer()`, `getProgress()`, `resetAnswers()`
 
@@ -124,8 +128,8 @@ Easily modify onboarding flow by editing the `onboardingSteps` array in `Onboard
 
 ```typescript
 const onboardingSteps = [
-  { name: 'Question1', component: Question1 },
-  { name: 'Question2', component: Question2 },
+  { name: "Question1", component: Question1 },
+  { name: "Question2", component: Question2 },
   // Reorder, add, or remove steps here
 ];
 ```
@@ -133,6 +137,7 @@ const onboardingSteps = [
 ## 🔌 API Integration
 
 Mock API service in `src/services/api.ts` with functions for:
+
 - `submitFunnelData()`: Submit onboarding answers
 - `analyzeHairImage()`: Process hair scan
 - `processPayment()`: Handle subscriptions

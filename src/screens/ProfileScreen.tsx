@@ -1,10 +1,10 @@
-import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Button from '../components/Button';
-import { useAuth } from '../contexts/AuthContext';
-import { useRevenueCat } from '../contexts/RevenueCatContext';
-import { colors, spacing, typography } from '../theme/colors';
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import Button from "../components/Button";
+import { useAuth } from "../contexts/AuthContext";
+import { useRevenueCat } from "../contexts/RevenueCatContext";
+import { colors, spacing, typography } from "../theme/colors";
 
 const ProfileScreen = () => {
   const { logout } = useAuth();
@@ -15,12 +15,15 @@ const ProfileScreen = () => {
   };
 
   const handleEditProfile = () => {
-    console.log('Edit profile');
+    console.log("Edit profile");
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.avatarContainer}>
@@ -30,7 +33,7 @@ const ProfileScreen = () => {
           <Text style={styles.email}>john.doe@example.com</Text>
           <View style={styles.subscriptionBadge}>
             <Text style={styles.subscriptionText}>
-              {isSubscribed ? 'Premium Member' : 'Free Account'}
+              {isSubscribed ? "Premium Member" : "Free Account"}
             </Text>
           </View>
         </View>
@@ -120,15 +123,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
     paddingVertical: spacing.xl,
     paddingHorizontal: spacing.lg,
-    alignItems: 'center',
+    alignItems: "center",
   },
   avatarContainer: {
     width: 120,
     height: 120,
     borderRadius: 60,
     backgroundColor: colors.background,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: spacing.md,
   },
   name: {
@@ -173,14 +176,14 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   sectionButton: {
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
   },
   profileStats: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
   statItem: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   statValue: {
     fontSize: typography.sizes.large,
@@ -193,8 +196,8 @@ const styles = StyleSheet.create({
     color: colors.gray.dark,
   },
   preferenceItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: spacing.sm,
   },
   preferenceText: {
@@ -209,8 +212,8 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.medium,
   },
   supportItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: spacing.sm,
   },
   supportText: {

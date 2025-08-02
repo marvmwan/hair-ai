@@ -1,6 +1,12 @@
-import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { borderRadius, colors, spacing, typography } from '../theme/colors';
+import React from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { borderRadius, colors, spacing, typography } from "../theme/colors";
 
 interface MultiSelectOption {
   id: string;
@@ -34,7 +40,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
     }
     if (isSelected) {
       // Remove from selection
-      const newValues = selectedValues.filter(id => id !== optionId);
+      const newValues = selectedValues.filter((id) => id !== optionId);
       onSelectionChange(newValues);
     } else {
       // Add to selection if under max limit
@@ -67,7 +73,6 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
       {title && <Text style={styles.title}>{title}</Text>}
       {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
 
-
       {/* Options list is now scrollable if too long */}
       <ScrollView
         style={styles.optionsScroll}
@@ -78,9 +83,10 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         {options.map((option) => {
           const isSelected = selectedValues.includes(option.id);
           // Only disable for multi-select
-          const isDisabled = maxSelections && maxSelections > 1
-            ? selectedValues.length >= maxSelections && !isSelected
-            : false;
+          const isDisabled =
+            maxSelections && maxSelections > 1
+              ? selectedValues.length >= maxSelections && !isSelected
+              : false;
 
           return (
             <TouchableOpacity
@@ -90,9 +96,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
               disabled={isDisabled}
               activeOpacity={0.7}
             >
-              {option.emoji && (
-                <Text style={styles.emoji}>{option.emoji}</Text>
-              )}
+              {option.emoji && <Text style={styles.emoji}>{option.emoji}</Text>}
               <Text style={getOptionTextStyle(isSelected, isDisabled)}>
                 {option.label}
               </Text>
@@ -106,36 +110,36 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: "100%",
   },
   title: {
     fontSize: typography.sizes.large,
     fontWeight: typography.weights.bold,
     color: colors.text.primary,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: spacing.sm,
   },
   subtitle: {
     fontSize: typography.sizes.medium,
     color: colors.gray.dark,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: spacing.lg,
   },
   maxSelectionsText: {
     fontSize: typography.sizes.small,
     color: colors.primary,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: spacing.md,
     fontWeight: typography.weights.medium,
   },
   optionsContainer: {
-    flexDirection: 'column',
-    width: '100%',
+    flexDirection: "column",
+    width: "100%",
     gap: spacing.lg,
   },
   option: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: "rgba(227, 242, 253, 0.5)",
     borderWidth: 0,
     borderRadius: borderRadius.xl,
@@ -143,8 +147,8 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.lg,
     marginBottom: 0,
     minHeight: 64,
-    width: '100%',
-    shadowColor: '#000',
+    width: "100%",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.08,
     shadowRadius: 8,
@@ -163,10 +167,10 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.large,
     fontWeight: typography.weights.medium,
     color: colors.text.primary,
-    textAlign: 'left',
+    textAlign: "left",
     fontFamily: typography.fonts.rounded,
     flexShrink: 1,
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
   },
   selectedOptionText: {
     color: colors.secondary,
@@ -181,7 +185,7 @@ const styles = StyleSheet.create({
   },
   optionsScroll: {
     maxHeight: 400,
-    width: '100%',
+    width: "100%",
     marginBottom: 0,
   },
 });

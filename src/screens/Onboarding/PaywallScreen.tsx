@@ -1,49 +1,56 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useAuth } from '../../contexts/AuthContext';
-import { useRevenueCat } from '../../contexts/RevenueCatContext';
-import { storage, StorageKeys } from '../../utils/storage';
-import { colors, typography, spacing } from '../../theme/colors';
-import Button from '../../components/Button';
-import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
+import React, { useState } from "react";
+import {
+  Alert,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import Button from "../../components/Button";
+import { useAuth } from "../../contexts/AuthContext";
+import { useRevenueCat } from "../../contexts/RevenueCatContext";
+import { colors, spacing, typography } from "../../theme/colors";
+import { saveItem, StorageKeys } from "../../utils/storage";
 
 const PaywallScreen = () => {
   const navigation = useNavigation();
   const { login } = useAuth();
   const { purchase } = useRevenueCat();
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState('premium');
+  const [selectedPlan, setSelectedPlan] = useState("premium");
 
   const plans = [
     {
-      id: 'premium',
-      title: 'Premium',
-      price: '$9.99',
-      period: 'month',
+      id: "premium",
+      title: "Premium",
+      price: "$9.99",
+      period: "month",
       features: [
-        'AI Hair Analysis',
-        'Personalized Recommendations',
-        'Barber Instructions',
-        'Product Suggestions',
-        'Style Tutorials',
-        'Face Shape Analysis',
+        "AI Hair Analysis",
+        "Personalized Recommendations",
+        "Barber Instructions",
+        "Product Suggestions",
+        "Style Tutorials",
+        "Face Shape Analysis",
       ],
       popular: true,
     },
     {
-      id: 'annual',
-      title: 'Annual',
-      price: '$79.99',
-      period: 'year',
+      id: "annual",
+      title: "Annual",
+      price: "$79.99",
+      period: "year",
       features: [
-        'Everything in Premium',
-        'Save 33% vs Monthly',
-        'Priority Support',
-        'Advanced Analytics',
-        'Exclusive Content',
-        'Early Access to Features',
+        "Everything in Premium",
+        "Save 33% vs Monthly",
+        "Priority Support",
+        "Advanced Analytics",
+        "Exclusive Content",
+        "Early Access to Features",
       ],
       popular: false,
     },
@@ -54,34 +61,34 @@ const PaywallScreen = () => {
     try {
       // Process purchase through RevenueCat
       const success = await purchase();
-      
+
       if (success) {
         // Mark onboarding as completed
-        await storage.setItem(StorageKeys.ONBOARDING_COMPLETED, 'true');
-        
+        await saveItem(StorageKeys.ONBOARDING_COMPLETED, "true");
+
         // Log in user (mock authentication)
-        const mockToken = 'mock_token_' + Date.now();
-        const mockUserId = 'user_' + Date.now();
+        const mockToken = "mock_token_" + Date.now();
+        const mockUserId = "user_" + Date.now();
         await login(mockToken, mockUserId);
-        
+
         Alert.alert(
-          'Success!',
-          'Welcome to HairStyle AI Premium! Your personalized hair journey starts now.',
+          "Success!",
+          "Welcome to HairStyle AI Premium! Your personalized hair journey starts now.",
           [
             {
-              text: 'Get Started',
+              text: "Get Started",
               onPress: () => {
                 // Navigation will be handled by AppNavigator based on auth state
               },
             },
-          ]
+          ],
         );
       } else {
-        Alert.alert('Purchase Failed', 'Please try again or contact support.');
+        Alert.alert("Purchase Failed", "Please try again or contact support.");
       }
     } catch (error) {
-      console.error('Purchase error:', error);
-      Alert.alert('Error', 'Something went wrong. Please try again.');
+      console.error("Purchase error:", error);
+      Alert.alert("Error", "Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -91,33 +98,35 @@ const PaywallScreen = () => {
     setIsLoading(true);
     try {
       // This would restore previous purchases in a real app
-      Alert.alert('Restore Purchases', 'No previous purchases found.');
+      Alert.alert("Restore Purchases", "No previous purchases found.");
     } catch (error) {
-      console.error('Restore error:', error);
-      Alert.alert('Error', 'Failed to restore purchases.');
+      console.error("Restore error:", error);
+      Alert.alert("Error", "Failed to restore purchases.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const PlanCard = ({ plan }: { plan: typeof plans[0] }) => (
-    <View style={[
-      styles.planCard,
-      selectedPlan === plan.id && styles.selectedPlan,
-      plan.popular && styles.popularPlan,
-    ]}>
+  const PlanCard = ({ plan }: { plan: (typeof plans)[0] }) => (
+    <View
+      style={[
+        styles.planCard,
+        selectedPlan === plan.id && styles.selectedPlan,
+        plan.popular && styles.popularPlan,
+      ]}
+    >
       {plan.popular && (
         <View style={styles.popularBadge}>
           <Text style={styles.popularBadgeText}>Most Popular</Text>
         </View>
       )}
-      
+
       <Text style={styles.planTitle}>{plan.title}</Text>
       <View style={styles.priceContainer}>
         <Text style={styles.price}>{plan.price}</Text>
         <Text style={styles.period}>/{plan.period}</Text>
       </View>
-      
+
       <View style={styles.featuresContainer}>
         {plan.features.map((feature, index) => (
           <View key={index} style={styles.featureItem}>
@@ -126,11 +135,11 @@ const PaywallScreen = () => {
           </View>
         ))}
       </View>
-      
+
       <Button
-        title={selectedPlan === plan.id ? 'Selected' : 'Select Plan'}
+        title={selectedPlan === plan.id ? "Selected" : "Select Plan"}
         onPress={() => setSelectedPlan(plan.id)}
-        variant={selectedPlan === plan.id ? 'primary' : 'outline'}
+        variant={selectedPlan === plan.id ? "primary" : "outline"}
         style={styles.selectButton}
       />
     </View>
@@ -142,7 +151,10 @@ const PaywallScreen = () => {
       style={styles.gradient}
     >
       <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          style={styles.scrollView}
+          showsVerticalScrollIndicator={false}
+        >
           {/* Header */}
           <View style={styles.header}>
             <Text style={styles.title}>Unlock Your Hair Potential</Text>
@@ -157,18 +169,20 @@ const PaywallScreen = () => {
               <Ionicons name="sparkles" size={32} color={colors.secondary} />
               <Text style={styles.benefitTitle}>AI-Powered Analysis</Text>
               <Text style={styles.benefitText}>
-                Advanced AI analyzes your hair type and face shape for perfect matches
+                Advanced AI analyzes your hair type and face shape for perfect
+                matches
               </Text>
             </View>
-            
+
             <View style={styles.benefitItem}>
               <Ionicons name="person" size={32} color={colors.secondary} />
               <Text style={styles.benefitTitle}>Personalized Just for You</Text>
               <Text style={styles.benefitText}>
-                Custom recommendations based on your unique hair goals and lifestyle
+                Custom recommendations based on your unique hair goals and
+                lifestyle
               </Text>
             </View>
-            
+
             <View style={styles.benefitItem}>
               <Ionicons name="cut" size={32} color={colors.secondary} />
               <Text style={styles.benefitTitle}>Expert Barber Tips</Text>
@@ -195,7 +209,7 @@ const PaywallScreen = () => {
               size="large"
               style={styles.ctaButton}
             />
-            
+
             <Button
               title="Restore Purchases"
               onPress={handleRestorePurchases}
@@ -233,20 +247,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
   },
   header: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: spacing.xl,
   },
   title: {
     fontSize: typography.sizes.xxlarge,
     fontWeight: typography.weights.bold,
     color: colors.secondary,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: spacing.md,
   },
   subtitle: {
     fontSize: typography.sizes.medium,
     color: colors.secondary,
-    textAlign: 'center',
+    textAlign: "center",
     opacity: 0.9,
     lineHeight: 22,
   },
@@ -254,9 +268,9 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl,
   },
   benefitItem: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: spacing.lg,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
     borderRadius: 16,
     padding: spacing.lg,
   },
@@ -264,13 +278,13 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.large,
     fontWeight: typography.weights.bold,
     color: colors.secondary,
-    textAlign: 'center',
+    textAlign: "center",
     marginVertical: spacing.sm,
   },
   benefitText: {
     fontSize: typography.sizes.medium,
     color: colors.secondary,
-    textAlign: 'center',
+    textAlign: "center",
     opacity: 0.9,
     lineHeight: 20,
   },
@@ -278,23 +292,23 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xl,
   },
   planCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
     borderRadius: 16,
     padding: spacing.lg,
     marginBottom: spacing.md,
     borderWidth: 2,
-    borderColor: 'transparent',
-    position: 'relative',
+    borderColor: "transparent",
+    position: "relative",
   },
   selectedPlan: {
     borderColor: colors.secondary,
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
   },
   popularPlan: {
     borderColor: colors.accent,
   },
   popularBadge: {
-    position: 'absolute',
+    position: "absolute",
     top: -8,
     right: spacing.lg,
     backgroundColor: colors.accent,
@@ -311,13 +325,13 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.xlarge,
     fontWeight: typography.weights.bold,
     color: colors.secondary,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: spacing.md,
   },
   priceContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'baseline',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "baseline",
     marginBottom: spacing.lg,
   },
   price: {
@@ -334,8 +348,8 @@ const styles = StyleSheet.create({
     marginBottom: spacing.lg,
   },
   featureItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: spacing.sm,
   },
   featureText: {
@@ -345,39 +359,39 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   selectButton: {
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   ctaContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: spacing.xl,
   },
   ctaButton: {
     backgroundColor: colors.secondary,
-    width: '100%',
+    width: "100%",
     marginBottom: spacing.md,
   },
   restoreButton: {
     borderColor: colors.secondary,
   },
   footer: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingBottom: spacing.xl,
   },
   footerText: {
     fontSize: typography.sizes.small,
     color: colors.secondary,
-    textAlign: 'center',
+    textAlign: "center",
     opacity: 0.8,
     marginBottom: spacing.md,
   },
   footerLinks: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   footerLink: {
     fontSize: typography.sizes.small,
     color: colors.secondary,
-    textDecorationLine: 'underline',
+    textDecorationLine: "underline",
     opacity: 0.8,
   },
   footerSeparator: {

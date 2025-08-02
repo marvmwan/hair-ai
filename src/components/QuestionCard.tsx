@@ -1,8 +1,8 @@
-import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { colors, spacing, typography } from '../theme/colors';
-import Button from './Button';
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { colors, spacing, typography } from "../theme/colors";
+import Button from "./Button";
 
 interface QuestionCardProps {
   title: string;
@@ -23,7 +23,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   onContinue,
   onBack,
   continueDisabled = false,
-  continueText = 'Continue',
+  continueText = "Continue",
   showBackButton = true,
   progress,
 }) => {
@@ -32,17 +32,18 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
       {/* Progress bar and back button */}
       <View style={styles.topBar}>
         {showBackButton && onBack && (
-          <TouchableOpacity onPress={onBack} style={styles.backButton} hitSlop={{top: 16, left: 16, right: 16, bottom: 16}}>
+          <TouchableOpacity
+            onPress={onBack}
+            style={styles.backButton}
+            hitSlop={{ top: 16, left: 16, right: 16, bottom: 16 }}
+          >
             <Ionicons name="arrow-back" size={28} color={colors.text.primary} />
           </TouchableOpacity>
         )}
         <View style={styles.progressBarContainer}>
           <View style={styles.progressBarBg}>
-            <View 
-              style={[
-                styles.progressBarFill, 
-                { width: `${progress ?? 0}%` }
-              ]} 
+            <View
+              style={[styles.progressBarFill, { width: `${progress ?? 0}%` }]}
             />
           </View>
         </View>
@@ -79,8 +80,8 @@ const styles = StyleSheet.create({
     marginHorizontal: spacing.lg,
   },
   topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: spacing.xl,
   },
   backButton: {
@@ -89,24 +90,24 @@ const styles = StyleSheet.create({
   },
   progressBarContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   progressBarBg: {
     height: 6,
     backgroundColor: colors.gray.light,
     borderRadius: 3,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   progressBarFill: {
-    height: '100%',
+    height: "100%",
     backgroundColor: colors.primary,
     borderRadius: 3,
   },
   content: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    width: '100%',
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    width: "100%",
   },
   title: {
     fontSize: 32,
@@ -114,21 +115,21 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
     fontFamily: typography.fonts.rounded,
     marginBottom: spacing.md,
-    textAlign: 'left',
+    textAlign: "left",
   },
   subtitle: {
     fontSize: typography.sizes.large,
     color: colors.text.secondary,
     fontFamily: typography.fonts.rounded,
     marginBottom: spacing.xl,
-    textAlign: 'left',
+    textAlign: "left",
   },
   childrenContainer: {
-    width: '100%',
+    width: "100%",
     gap: spacing.lg,
   },
   buttonContainer: {
-    width: '100%',
+    width: "100%",
     marginTop: spacing.xl,
     marginBottom: spacing.xl,
   },

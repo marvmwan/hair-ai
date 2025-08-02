@@ -4,6 +4,8 @@
   <dict>
     <key>CADisableMinimumFrameDurationOnPhone</key>
     <true/>
+    <key>CFBundleAllowMixedLocalizations</key>
+    <true/>
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
@@ -28,13 +30,19 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>hairai</string>
-          <string>com.skinalyzeteam.hairai</string>
+          <string>com.boringbuildscompany.hairai</string>
         </array>
       </dict>
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
           <string>exp+hair-ai</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>com.googleusercontent.apps.298504905971-pkhbl7urc8e1sh3ghtr05u14tgsojqqi</string>
         </array>
       </dict>
     </array>

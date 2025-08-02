@@ -1,7 +1,14 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-import { storage, StorageKeys } from '../utils/storage';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { getItem, saveItem, StorageKeys } from "../utils/storage";
 
 export interface FunnelAnswers {
+  hairGoal?: string;
   gender?: string;
   ageGroup?: string;
   dailyHairConfidence?: number;
@@ -31,6 +38,7 @@ interface FunnelContextType {
   saveAnswers: () => Promise<void>;
   loadAnswers: () => Promise<void>;
   getProgress: () => number;
+  clearScanAnswers: () => void;
 }
 
 const FunnelContext = createContext<FunnelContextType | undefined>(undefined);
@@ -38,7 +46,7 @@ const FunnelContext = createContext<FunnelContextType | undefined>(undefined);
 export const useFunnel = () => {
   const context = useContext(FunnelContext);
   if (!context) {
-    throw new Error('useFunnel must be used within a FunnelProvider');
+    throw new Error("useFunnel must be used within a FunnelProvider");
   }
   return context;
 };
@@ -53,7 +61,7 @@ export const FunnelProvider: React.FC<FunnelProviderProps> = ({ children }) => {
   const [answers, setAnswers] = useState<FunnelAnswers>(initialAnswers);
 
   const updateAnswer = (key: keyof FunnelAnswers, value: any) => {
-    setAnswers(prev => ({
+    setAnswers((prev) => ({
       ...prev,
       [key]: value,
     }));
@@ -63,29 +71,43 @@ export const FunnelProvider: React.FC<FunnelProviderProps> = ({ children }) => {
     setAnswers(initialAnswers);
   };
 
+  const clearScanAnswers = () => {
+    const newAnswers = { ...answers };
+    Object.keys(newAnswers).forEach((key) => {
+      if (key.endsWith("Image")) {
+        delete (newAnswers as any)[key];
+      }
+    });
+    setAnswers(newAnswers);
+  };
+
   const saveAnswers = async () => {
     try {
-      await storage.setObject(StorageKeys.FUNNEL_ANSWERS, answers);
+      await saveItem(StorageKeys.FUNNEL_ANSWERS, answers);
     } catch (error) {
-      console.error('Error saving funnel answers:', error);
+      console.error("Error saving funnel answers:", error);
     }
   };
 
   const loadAnswers = async () => {
     try {
-      const savedAnswers = await storage.getObject(StorageKeys.FUNNEL_ANSWERS);
+      const savedAnswers = await getItem(StorageKeys.FUNNEL_ANSWERS);
       if (savedAnswers) {
         setAnswers(savedAnswers);
       }
     } catch (error) {
-      console.error('Error loading funnel answers:', error);
+      console.error("Error loading funnel answers:", error);
     }
   };
 
   const getProgress = (): number => {
-    const totalQuestions = Object.keys(initialAnswers).filter(k => k !== 'hairScanImage').length;
-    const answeredQuestions = Object.keys(answers).filter(key => 
-      key !== 'hairScanImage' && answers[key as keyof FunnelAnswers] !== undefined
+    const totalQuestions = Object.keys(initialAnswers).filter(
+      (k) => k !== "hairScanImage",
+    ).length;
+    const answeredQuestions = Object.keys(answers).filter(
+      (key) =>
+        key !== "hairScanImage" &&
+        answers[key as keyof FunnelAnswers] !== undefined,
     ).length;
     return Math.round((answeredQuestions / totalQuestions) * 100);
   };
@@ -105,11 +127,10 @@ export const FunnelProvider: React.FC<FunnelProviderProps> = ({ children }) => {
     saveAnswers,
     loadAnswers,
     getProgress,
+    clearScanAnswers,
   };
 
   return (
-    <FunnelContext.Provider value={value}>
-      {children}
-    </FunnelContext.Provider>
+    <FunnelContext.Provider value={value}>{children}</FunnelContext.Provider>
   );
 };

@@ -1,10 +1,17 @@
-import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
-import Button from '../components/Button';
-import { useAuth } from '../contexts/AuthContext';
-import { useRevenueCat } from '../contexts/RevenueCatContext';
-import { colors, spacing, typography } from '../theme/colors';
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from "react-native";
+import Button from "../components/Button";
+import { useAuth } from "../contexts/AuthContext";
+import { useRevenueCat } from "../contexts/RevenueCatContext";
+import { colors, spacing, typography } from "../theme/colors";
 
 const SettingsScreen = () => {
   const { logout } = useAuth();
@@ -17,22 +24,29 @@ const SettingsScreen = () => {
   };
 
   const handleManageSubscription = () => {
-    console.log('Manage subscription');
+    console.log("Manage subscription");
   };
 
   const handlePrivacyPolicy = () => {
-    console.log('Privacy policy');
+    console.log("Privacy policy");
   };
 
   const handleTermsOfService = () => {
-    console.log('Terms of service');
+    console.log("Terms of service");
   };
 
   const handleRateApp = () => {
-    console.log('Rate app');
+    console.log("Rate app");
   };
 
-  const SettingItem = ({ icon, title, value, onValueChange, showSwitch = false, onPress }: any) => (
+  const SettingItem = ({
+    icon,
+    title,
+    value,
+    onValueChange,
+    showSwitch = false,
+    onPress,
+  }: any) => (
     <View style={styles.settingItem}>
       <View style={styles.settingLeft}>
         <Ionicons name={icon} size={24} color={colors.primary} />
@@ -56,7 +70,10 @@ const SettingsScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.title}>Settings</Text>
@@ -95,12 +112,12 @@ const SettingsScreen = () => {
             <SettingItem
               icon="person"
               title="Account Settings"
-              onPress={() => console.log('Account settings')}
+              onPress={() => console.log("Account settings")}
             />
             <SettingItem
               icon="archive"
               title="Data & Privacy"
-              onPress={() => console.log('Data & Privacy')}
+              onPress={() => console.log("Data & Privacy")}
             />
           </View>
 
@@ -110,16 +127,16 @@ const SettingsScreen = () => {
             <SettingItem
               icon="help-circle"
               title="Help Center"
-              onPress={() => console.log('Help center')}
+              onPress={() => console.log("Help center")}
             />
             <SettingItem
               icon="mail"
               title="Contact Support"
-              onPress={() => console.log('Contact support')}
+              onPress={() => console.log("Contact support")}
             />
             <SettingItem
               icon="star"
-              title="Rate HairStyle AI"
+              title="Rate Cuts AI"
               onPress={handleRateApp}
             />
           </View>
@@ -198,16 +215,16 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   settingItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingVertical: spacing.md,
     borderBottomWidth: 1,
     borderBottomColor: colors.gray.light,
   },
   settingLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     flex: 1,
   },
   settingTitle: {
@@ -216,8 +233,8 @@ const styles = StyleSheet.create({
     marginLeft: spacing.md,
   },
   settingRight: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   settingValue: {
     fontSize: typography.sizes.medium,
@@ -225,7 +242,7 @@ const styles = StyleSheet.create({
     marginRight: spacing.sm,
   },
   appInfo: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: spacing.md,
   },
   appInfoText: {

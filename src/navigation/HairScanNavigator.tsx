@@ -1,11 +1,12 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
-import CaptureScreen from '../screens/Onboarding/HairScan/CaptureScreen';
-import ReviewScreen from '../screens/Onboarding/HairScan/ReviewScreen';
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import CaptureScreen from "../screens/Onboarding/HairScan/CaptureScreen";
+import ReviewScreen from "../screens/Onboarding/HairScan/ReviewScreen";
+import { ScanType } from "../screens/Onboarding/HairScanInfoScreen";
 
 export type HairScanStackParamList = {
-  Capture: { scanType: 'top' | 'side' | 'back' | 'front' | 'face' };
-  Review: undefined;
+  Capture: { scanType: ScanType };
+  Review: { scanType: ScanType };
 };
 
 const Stack = createStackNavigator<HairScanStackParamList>();

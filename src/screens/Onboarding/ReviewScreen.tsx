@@ -1,8 +1,16 @@
-import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Button from '../../components/Button';
-import { borderRadius, colors, spacing, typography } from '../../theme/colors';
+import { Ionicons } from "@expo/vector-icons";
+import * as StoreReview from 'expo-store-review';
+import React, { useEffect } from "react";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import Button from "../../components/Button";
+import { borderRadius, colors, spacing, typography } from "../../theme/colors";
 
 interface ReviewScreenProps {
   onContinue: () => void;
@@ -12,12 +20,31 @@ interface ReviewScreenProps {
 
 const AVATAR_SIZE = 48;
 
-const ReviewScreen: React.FC<ReviewScreenProps> = ({ onContinue, onBack, progress }) => {
+const ReviewScreen: React.FC<ReviewScreenProps> = ({
+  onContinue,
+  onBack,
+  progress,
+}) => {
+  useEffect(() => {
+    const requestReview = async () => {
+      const isAvailable = await StoreReview.isAvailableAsync();
+      if (isAvailable) {
+        // This will open the native review prompt.
+        // iOS and Android handle the logic of when to actually show it to the user.
+        StoreReview.requestReview();
+      }
+    };
+    requestReview();
+  }, []); // Empty dependency array means this runs once on mount
+
   return (
     <View style={styles.container}>
       {/* Top Bar: Back Button & Progress */}
       <View style={styles.topBar}>
-        <TouchableOpacity onPress={onBack} hitSlop={{ top: 16, left: 16, right: 16, bottom: 16 }}>
+        <TouchableOpacity
+          onPress={onBack}
+          hitSlop={{ top: 16, left: 16, right: 16, bottom: 16 }}
+        >
           <Ionicons name="arrow-back" size={28} color={colors.text.primary} />
         </TouchableOpacity>
         <View style={styles.progressBarContainer}>
@@ -25,8 +52,15 @@ const ReviewScreen: React.FC<ReviewScreenProps> = ({ onContinue, onBack, progres
         </View>
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-        <Image source={require('../../../assets/images/social-proof/badge.png')} style={styles.badgeImage} resizeMode="contain" />
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
+        <Image
+          source={require("../../../assets/images/social-proof/badge.png")}
+          style={styles.badgeImage}
+          resizeMode="contain"
+        />
         {/* Social Proof */}
         <View style={styles.socialProofContainer}>
           <View style={styles.ratingContainer}>
@@ -40,61 +74,80 @@ const ReviewScreen: React.FC<ReviewScreenProps> = ({ onContinue, onBack, progres
             <Text style={styles.ratingText}>4.8</Text>
           </View>
           <View style={styles.avatarsContainer}>
-            <Image source={{ uri: 'https://i.pravatar.cc/150?u=a' }} style={styles.avatar} />
-            <Image source={{ uri: 'https://i.pravatar.cc/150?u=b' }} style={[styles.avatar, { marginLeft: -spacing.md }]} />
-            <Image source={{ uri: 'https://i.pravatar.cc/150?u=c' }} style={[styles.avatar, { marginLeft: -spacing.md }]} />
+            <Image
+              source={{ uri: "https://i.pravatar.cc/150?u=a" }}
+              style={styles.avatar}
+            />
+            <Image
+              source={{ uri: "https://i.pravatar.cc/150?u=b" }}
+              style={[styles.avatar, { marginLeft: -spacing.md }]}
+            />
+            <Image
+              source={{ uri: "https://i.pravatar.cc/150?u=c" }}
+              style={[styles.avatar, { marginLeft: -spacing.md }]}
+            />
           </View>
-          <Text style={styles.usersCountText}>⭐️ 500,000+ users have already joined</Text>
+          <Text style={styles.usersCountText}>
+            ⭐️ 500,000+ users have already joined
+          </Text>
         </View>
 
         {/* Reviews */}
         <View style={styles.reviewCard}>
-        <View style={styles.reviewHeader}>
+          <View style={styles.reviewHeader}>
             <Image
-              source={{ uri: 'https://i.pravatar.cc/150?u=joe' }}
+              source={{ uri: "https://i.pravatar.cc/150?u=joe" }}
               style={{
                 width: 36,
                 height: 36,
                 borderRadius: 18,
                 marginRight: spacing.md,
                 borderWidth: 1,
-                borderColor: '#fff',
+                borderColor: "#fff",
               }}
             />
             <View>
               <Text style={styles.reviewName}>Joseph Wilkens</Text>
               <View style={styles.reviewStars}>
-                {[...Array(5)].map((_, i) => <Text key={i}>⭐️</Text>)}
+                {[...Array(5)].map((_, i) => (
+                  <Text key={i}>⭐️</Text>
+                ))}
               </View>
             </View>
           </View>
           <Text style={styles.reviewBody}>
-            This app is incredible! It scans my hair type perfectly and gives personalized care tips. It&apos;s easy to use and has really helped improve my hair health.
+            This app is incredible! It scans my hair type perfectly and gives
+            personalized care tips. It&apos;s easy to use and has really helped
+            improve my hair health.
           </Text>
         </View>
 
         <View style={styles.reviewCard}>
           <View style={styles.reviewHeader}>
             <Image
-              source={{ uri: 'https://i.pravatar.cc/150?u=sarah' }}
+              source={{ uri: "https://i.pravatar.cc/150?u=sarah" }}
               style={{
                 width: 36,
                 height: 36,
                 borderRadius: 18,
                 marginRight: spacing.md,
                 borderWidth: 1,
-                borderColor: '#fff',
+                borderColor: "#fff",
               }}
             />
             <View>
               <Text style={styles.reviewName}>Audrey Heper</Text>
               <View style={styles.reviewStars}>
-                {[...Array(5)].map((_, i) => <Text key={i}>⭐️</Text>)}
+                {[...Array(5)].map((_, i) => (
+                  <Text key={i}>⭐️</Text>
+                ))}
               </View>
             </View>
           </View>
           <Text style={styles.reviewBody}>
-            The AI technology in this app is impressive. It scanned my hair and recommended products that actually work for my hair type. My hair is growing back already!
+            The AI technology in this app is impressive. It scanned my hair and
+            recommended products that actually work for my hair type. My hair is
+            growing back already!
           </Text>
         </View>
       </ScrollView>
@@ -114,21 +167,21 @@ const ReviewScreen: React.FC<ReviewScreenProps> = ({ onContinue, onBack, progres
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1,    paddingTop: spacing.xl,marginHorizontal: spacing.lg},
+  container: { flex: 1, paddingTop: spacing.xl, marginHorizontal: spacing.lg },
   topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: spacing.xl,
   },
   progressBarContainer: {
     flex: 1,
     height: 8,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    backgroundColor: "rgba(255, 255, 255, 0.3)",
     borderRadius: 4,
     marginLeft: spacing.md,
   },
   progressBarFill: {
-    height: '100%',
+    height: "100%",
     backgroundColor: colors.primary,
     borderRadius: 4,
   },
@@ -136,29 +189,29 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.xxl,
   },
   badgeImage: {
-    width: '100%',
+    width: "100%",
     height: 150,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   socialProofContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: spacing.xl,
   },
   ratingContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: colors.secondary,
     borderRadius: borderRadius.full,
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
     elevation: 5,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
   starsContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   starBox: {
     backgroundColor: `${colors.accent}20`, // Light green background
@@ -169,13 +222,13 @@ const styles = StyleSheet.create({
   ratingText: {
     fontFamily: typography.fonts.rounded,
     fontSize: 22,
-    fontWeight: '700',
+    fontWeight: "700",
     color: colors.text.primary,
     marginLeft: spacing.md,
   },
   avatarsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     marginTop: spacing.lg,
   },
   avatar: {
@@ -188,30 +241,30 @@ const styles = StyleSheet.create({
   usersCountText: {
     fontFamily: typography.fonts.rounded,
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     color: colors.text.secondary,
     marginTop: spacing.sm,
   },
   reviewCard: {
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    backgroundColor: "rgba(255, 255, 255, 0.4)",
     borderRadius: borderRadius.lg,
     padding: spacing.lg,
     marginBottom: spacing.md,
   },
   reviewHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: spacing.sm,
   },
   reviewName: {
     fontFamily: typography.fonts.rounded,
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     color: colors.text.primary,
     marginRight: spacing.sm,
   },
   reviewStars: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   reviewBody: {
     fontFamily: typography.fonts.rounded,
@@ -219,17 +272,16 @@ const styles = StyleSheet.create({
     color: colors.text.secondary,
     lineHeight: 22,
   },
-    buttonContainer: {
-      paddingVertical: spacing.md,
-
-    },
-    button: {
-      borderRadius: borderRadius.full,
-      backgroundColor: colors.button.primary,
-    },
-    buttonText: {
-      color: colors.text.primary,
-    },
+  buttonContainer: {
+    paddingVertical: spacing.md,
+  },
+  button: {
+    borderRadius: borderRadius.full,
+    backgroundColor: colors.button.primary,
+  },
+  buttonText: {
+    color: colors.text.primary,
+  },
 });
 
-export default ReviewScreen; 
+export default ReviewScreen;
